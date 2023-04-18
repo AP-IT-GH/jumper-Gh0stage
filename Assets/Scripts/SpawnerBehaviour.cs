@@ -32,6 +32,7 @@ public class SpawnerBehaviour : MonoBehaviour
 
     private void spawnObstacle()
     {
-        Instantiate(Resources.Load("Obstacle"));
+        Obstacle devilspawn = Instantiate(Resources.Load("Obstacle"));
+        devilspawn.transform.localPosition = gameObject.transform.localPosition;
     }
 }
