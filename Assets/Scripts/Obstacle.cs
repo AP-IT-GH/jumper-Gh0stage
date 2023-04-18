@@ -12,12 +12,10 @@ public class Obstacle : MonoBehaviour
     float currentPosition;
     [SerializeField] float speed;
 
-    [SerializeField] Agent agent;
     void Start()
     {
-        currentPosition = 0;
         startLocation = transform.localPosition;
-        endLocation = agent.transform.localPosition - new Vector3(startLocation.x + 10, 0, startLocation.z + 10);
+        endLocation = new Vector3(startLocation.x + 100, startLocation.y, startLocation.z);
     }
 
     void Update()
