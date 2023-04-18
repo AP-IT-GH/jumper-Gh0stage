@@ -11,15 +11,13 @@ public class JumperAgent : Agent
     private SphereCollider hitbox;
     private Rigidbody rb;
     [SerializeField] private float jumpForce = 2f;
-    private float basePosition;
     private bool isJumping = false;
+    private bool isFalling = false;
 
     public override void Initialize()
     {
         hitbox = GetComponent<SphereCollider>();
         rb = GetComponent<Rigidbody>();
-        basePosition = transform.localPosition.y;
-        Debug.Log(basePosition);
     }
 
     public override void OnEpisodeBegin()
@@ -44,9 +42,15 @@ public class JumperAgent : Agent
             Jump();
         }
 
-        if (isJumping && Mathf.Approximately(transform.localPosition.y, basePosition) && Mathf.Approximately(rb.velocity.y, 0))
+        if (isJumping && rb.velocity.y < 0)
+        {
+            isFalling = true;
+        }
+
+        if (isFalling && rb.velocity.y == 0)
         {
             isJumping = false;
+            isFalling = false;
         }
     }
 
