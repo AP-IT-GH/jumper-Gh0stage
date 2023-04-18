@@ -322,6 +322,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  jumpForce: 5
 --- !u!114 &1755368144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +503,10 @@ PrefabInstance:
     - target: {fileID: 7553621700526323612, guid: cd4571156be1da64a9f4c24fd82793d3, type: 3}
       propertyPath: spawnRate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725435553898544856, guid: cd4571156be1da64a9f4c24fd82793d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9150279645858492737, guid: cd4571156be1da64a9f4c24fd82793d3, type: 3}
       propertyPath: m_LocalPosition.x
