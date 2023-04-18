@@ -322,7 +322,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  jumpForce: 5
+  jumpForce: 15
 --- !u!114 &1755368144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +490,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4354104128750605658, guid: cd4571156be1da64a9f4c24fd82793d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478293526695177360, guid: cd4571156be1da64a9f4c24fd82793d3, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6331815601417821206, guid: cd4571156be1da64a9f4c24fd82793d3, type: 3}

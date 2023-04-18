@@ -18,6 +18,7 @@ public class JumperAgent : Agent
     {
         hitbox = GetComponent<SphereCollider>();
         rb = GetComponent<Rigidbody>();
+        rb.mass = 2;
     }
 
     public override void OnEpisodeBegin()
