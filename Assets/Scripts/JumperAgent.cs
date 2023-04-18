@@ -10,12 +10,16 @@ public class JumperAgent : Agent
 {
     private SphereCollider hitbox;
     private Rigidbody rb;
-    private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 2f;
+    private float basePosition;
+    private bool isJumping = false;
 
     public override void Initialize()
     {
         hitbox = GetComponent<SphereCollider>();
         rb = GetComponent<Rigidbody>();
+        basePosition = transform.localPosition.y;
+        Debug.Log(basePosition);
     }
 
     public override void OnEpisodeBegin()
@@ -33,18 +37,24 @@ public class JumperAgent : Agent
     {
 
         int jumpAction = actionBuffers.DiscreteActions[0];
-        Debug.Log(jumpAction);
-        if (jumpAction > 0f)
+        //Debug.Log(jumpAction);
+        if (jumpAction > 0f && !isJumping)
         {
+            isJumping = true;
             Jump();
+        }
+
+        if (isJumping && Mathf.Approximately(transform.localPosition.y, basePosition) && Mathf.Approximately(rb.velocity.y, 0))
+        {
+            isJumping = false;
         }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActionsOut = actionsOut.DiscreteActions;
-        discreteActionsOut[0] = Input.GetKeyDown(KeyCode.Space) ? 1:0;
-        Debug.Log(discreteActionsOut[0]);
+        discreteActionsOut[0] = Input.GetKey(KeyCode.Space) ? 1:0;
+        //Debug.Log(Input.GetKey(KeyCode.Space));
     }
 
     public override void CollectObservations(VectorSensor sensor) {    }
