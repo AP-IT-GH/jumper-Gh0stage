@@ -8,31 +8,38 @@ using Random = UnityEngine.Random;
 public class SpawnerBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] List<Obstacle> obstacles;
     [SerializeField] float minSpawnInterval = 0.8f;
     [SerializeField] float maxSpawnInterval = 2f;
+
+    public bool IsRunning { get; set; } = true;
+    public uint SpawnCount { get; private set; }
+
     void Start()
     {
         StartCoroutine(DoCheck());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetSpawner()
     {
-
+        SpawnCount = 0;
     }
+
     IEnumerator DoCheck()
     {
         while(true)
         {
-            spawnObstacle();
+            if (IsRunning)
+                SpawnObstacle();
             yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
         }
     }
 
-    private void spawnObstacle()
+    private void SpawnObstacle()
     {
-        var devilspawn = (GameObject)Instantiate(Resources.Load("Obstacle"), gameObject.transform);
-        devilspawn.transform.localPosition = gameObject.transform.localPosition;
+        var devilspawn = Instantiate(Resources.Load<Obstacle>("Obstacle"));
+        //devilspawn.transform.localPosition = Vector3.zero;
+        devilspawn.transform.parent = transform;
+        devilspawn.transform.localPosition = Vector3.zero;
+        SpawnCount++;
     }
 }

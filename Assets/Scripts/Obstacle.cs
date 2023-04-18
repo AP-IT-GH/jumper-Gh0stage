@@ -18,12 +18,19 @@ public class Obstacle : MonoBehaviour
         endLocation = new Vector3(startLocation.x + 100, startLocation.y, startLocation.z);
     }
 
+    void GiveReward()
+    {
+        var agent = transform.parent.parent.Find("Agent").GetComponent<JumperAgent>();
+        agent.Reward();
+    }
+
     void Update()
     {
         currentPosition += Time.deltaTime * speed;
-        transform.position = Vector3.Lerp(startLocation, endLocation, currentPosition);
+        transform.localPosition = Vector3.Lerp(startLocation, endLocation, currentPosition);
         if (currentPosition > 1)
         {
+            GiveReward();
             Destroy(gameObject);
         }
     }
