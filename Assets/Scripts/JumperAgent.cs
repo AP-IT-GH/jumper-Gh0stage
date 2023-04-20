@@ -13,7 +13,7 @@ public class JumperAgent : Agent
     [SerializeField] private float rewardOnScore = 1f;
     [SerializeField] private float rewardOnFail = -1.0f;
     [SerializeField] private float jumpPenalty = -0.5f;
-    [SerializeField] public const int maxEpisodeDuration = 40;
+    [SerializeField] public const int maxEpisodeDuration = 7;
 
     private SphereCollider hitbox;
     private Rigidbody rb;

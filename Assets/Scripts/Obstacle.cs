@@ -9,7 +9,7 @@ public class Obstacle : MonoBehaviour
 {
     Vector3 startLocation;
     Rigidbody rb;
-    [SerializeField] float speed;
+    public float Speed { get; set; }
     [SerializeField] float distance;
     Vector3 velocity;
 
@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
     {
         startLocation = transform.localPosition;
         rb = GetComponent<Rigidbody>();
-        velocity = new Vector3(speed, 0, 0);
+        velocity = new Vector3(Speed, 0, 0);
         rb.velocity = velocity;
     }
 
