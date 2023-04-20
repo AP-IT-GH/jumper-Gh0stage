@@ -49,11 +49,10 @@ public class JumperAgent : Agent
     {
 
         int jumpAction = actionBuffers.DiscreteActions[0];
-        Debug.Log(jumpAction);
         if (jumpAction > 0f && !isJumping)
         {
             isJumping = true;
-            //Jump();
+            Jump();
         }
 
         if (isJumping && rb.velocity.y < 0)

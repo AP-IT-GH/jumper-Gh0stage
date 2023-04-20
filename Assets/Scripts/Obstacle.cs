@@ -8,14 +8,17 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     Vector3 startLocation;
-    Vector3 endLocation;
-    float currentPosition;
+    Rigidbody rb;
     [SerializeField] float speed;
+    [SerializeField] float distance;
+    Vector3 velocity;
 
     void Start()
     {
         startLocation = transform.localPosition;
-        endLocation = new Vector3(startLocation.x + 100, startLocation.y, startLocation.z);
+        rb = GetComponent<Rigidbody>();
+        velocity = new Vector3(speed, 0, 0);
+        rb.velocity = velocity;
     }
 
     void GiveReward()
@@ -26,12 +29,17 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        currentPosition += Time.deltaTime * speed;
-        transform.localPosition = Vector3.Lerp(startLocation, endLocation, currentPosition);
-        if (currentPosition > 1)
+        rb.velocity = velocity;
+        if (transform.localPosition.x - startLocation.x > distance)
         {
+            Debug.Log("passed distance");
             GiveReward();
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("ping2 " + other.tag);
     }
 }
