@@ -23,3 +23,11 @@ behaviors:
     max_steps: 10000000000000000
     time_horizon: 64
     summary_freq: 2000
+    # new lines added for collision detection
+    behavior_name: JumperAgent
+    take_actions_in_training: true
+    use_train_stepper: true
+    # set a lower value for the physics steps per action
+    trainer_settings:
+      max_steps: 900
+      physics_steps_per_behavior_step: 5

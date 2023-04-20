@@ -8,10 +8,11 @@ using System;
 
 public class JumperAgent : Agent
 {
-    [SerializeField] private float jumpForce = 2f;
+    [SerializeField] private float jumpForce = 13.0f;
 
-    [SerializeField] private float rewardOnScore = 0.25f;
-    [SerializeField] private float rewardOnFail = -0.2f;
+    [SerializeField] private float rewardOnScore = 1f;
+    [SerializeField] private float rewardOnFail = -1.0f;
+    [SerializeField] private float jumpPenalty = -0.5f;
 
     private SphereCollider hitbox;
     private Rigidbody rb;
@@ -48,11 +49,11 @@ public class JumperAgent : Agent
     {
 
         int jumpAction = actionBuffers.DiscreteActions[0];
-        //Debug.Log(jumpAction);
+        Debug.Log(jumpAction);
         if (jumpAction > 0f && !isJumping)
         {
             isJumping = true;
-            Jump();
+            //Jump();
         }
 
         if (isJumping && rb.velocity.y < 0)
@@ -65,11 +66,6 @@ public class JumperAgent : Agent
             isJumping = false;
             isFalling = false;
         }
-
-        if (spawnerScript.SpawnCount >= 7)
-        {
-            EndEpisode();
-        }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -81,23 +77,32 @@ public class JumperAgent : Agent
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("ping " + other.tag);
+
         if (other.CompareTag("Obstacle"))
         {
+            Debug.Log("Obstacle collided: " + other.tag);
+
             Destroy(other.gameObject);
             AddReward(rewardOnFail);
+            EndEpisode();
         }
+
     }
+
 
     public void Reward()
     {
+        //Debug.Log("Reward before: "+GetCumulativeReward());
         AddReward(rewardOnScore);
-        Debug.Log(GetCumulativeReward());
+        //Debug.Log("Reward after: "+GetCumulativeReward());
     }
 
     public override void CollectObservations(VectorSensor sensor) {    }
 
     private void Jump()
     {
+        AddReward(jumpPenalty);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
