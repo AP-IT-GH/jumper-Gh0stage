@@ -10,12 +10,14 @@ public class SpawnerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float minSpawnInterval = 0.8f;
     [SerializeField] float maxSpawnInterval = 2f;
+    JumperAgent agent;
 
     public bool IsRunning { get; set; } = true;
-    public uint SpawnCount { get; private set; }
+    public int SpawnCount { get; private set; }
 
     void Start()
     {
+        agent = transform.parent.Find("Agent").GetComponent<JumperAgent>();
         StartCoroutine(DoCheck());
     }
 
@@ -36,10 +38,11 @@ public class SpawnerBehaviour : MonoBehaviour
 
     private void SpawnObstacle()
     {
-        var devilspawn = Instantiate(Resources.Load<Obstacle>("Obstacle"));
+        var obstacle = Instantiate(Resources.Load<Obstacle>("Obstacle"));
         //devilspawn.transform.localPosition = Vector3.zero;
-        devilspawn.transform.parent = transform;
-        devilspawn.transform.localPosition = Vector3.zero;
+        obstacle.transform.parent = transform;
+        obstacle.transform.localPosition = Vector3.zero;
         SpawnCount++;
+        agent.CheckEpisodeDuration(SpawnCount);
     }
 }

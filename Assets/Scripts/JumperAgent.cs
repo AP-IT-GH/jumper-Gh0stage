@@ -13,6 +13,7 @@ public class JumperAgent : Agent
     [SerializeField] private float rewardOnScore = 1f;
     [SerializeField] private float rewardOnFail = -1.0f;
     [SerializeField] private float jumpPenalty = -0.5f;
+    [SerializeField] public const int maxEpisodeDuration = 40;
 
     private SphereCollider hitbox;
     private Rigidbody rb;
@@ -89,7 +90,14 @@ public class JumperAgent : Agent
 
     }
 
-
+    public void CheckEpisodeDuration(int obstaclesSpawned)
+    {
+        if(obstaclesSpawned >= maxEpisodeDuration)
+        {
+            Debug.Log("Episode ended without casualties!");
+            EndEpisode();
+        }
+    }
     public void Reward()
     {
         //Debug.Log("Reward before: "+GetCumulativeReward());
@@ -103,5 +111,10 @@ public class JumperAgent : Agent
     {
         AddReward(jumpPenalty);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    public static explicit operator JumperAgent(GameObject v)
+    {
+        throw new NotImplementedException();
     }
 }

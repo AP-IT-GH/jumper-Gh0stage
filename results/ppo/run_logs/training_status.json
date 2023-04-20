@@ -2,49 +2,58 @@
     "JumperAgent": {
         "checkpoints": [
             {
-                "steps": 73728,
-                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-73728.onnx",
-                "reward": null,
-                "creation_time": 1681997588.9843943,
+                "steps": 401441,
+                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-401441.onnx",
+                "reward": -3.2916666666666665,
+                "creation_time": 1682001904.2445247,
                 "auxillary_file_paths": [
-                    "results\\ppo\\JumperAgent\\JumperAgent-73728.pt"
+                    "results\\ppo\\JumperAgent\\JumperAgent-401441.pt"
                 ]
             },
             {
-                "steps": 102400,
-                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-102400.onnx",
-                "reward": null,
-                "creation_time": 1681997721.8011343,
+                "steps": 499944,
+                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-499944.onnx",
+                "reward": -3.0,
+                "creation_time": 1682003217.623822,
                 "auxillary_file_paths": [
-                    "results\\ppo\\JumperAgent\\JumperAgent-102400.pt"
+                    "results\\ppo\\JumperAgent\\JumperAgent-499944.pt"
                 ]
             },
             {
-                "steps": 163840,
-                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-163840.onnx",
-                "reward": null,
-                "creation_time": 1681997835.541418,
+                "steps": 500008,
+                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-500008.onnx",
+                "reward": -3.0,
+                "creation_time": 1682003217.6710844,
                 "auxillary_file_paths": [
-                    "results\\ppo\\JumperAgent\\JumperAgent-163840.pt"
+                    "results\\ppo\\JumperAgent\\JumperAgent-500008.pt"
                 ]
             },
             {
-                "steps": 280576,
-                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-280576.onnx",
+                "steps": 500008,
+                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-500008.onnx",
                 "reward": null,
-                "creation_time": 1681998074.0609589,
+                "creation_time": 1682003415.074591,
                 "auxillary_file_paths": [
-                    "results\\ppo\\JumperAgent\\JumperAgent-280576.pt"
+                    "results\\ppo\\JumperAgent\\JumperAgent-500008.pt"
+                ]
+            },
+            {
+                "steps": 500008,
+                "file_path": "results\\ppo\\JumperAgent\\JumperAgent-500008.onnx",
+                "reward": null,
+                "creation_time": 1682003480.1271122,
+                "auxillary_file_paths": [
+                    "results\\ppo\\JumperAgent\\JumperAgent-500008.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 280576,
+            "steps": 500008,
             "file_path": "results\\ppo\\JumperAgent.onnx",
             "reward": null,
-            "creation_time": 1681998074.0609589,
+            "creation_time": 1682003480.1271122,
             "auxillary_file_paths": [
-                "results\\ppo\\JumperAgent\\JumperAgent-280576.pt"
+                "results\\ppo\\JumperAgent\\JumperAgent-500008.pt"
             ]
         }
     },

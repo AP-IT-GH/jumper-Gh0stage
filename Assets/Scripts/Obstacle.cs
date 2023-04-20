@@ -37,9 +37,4 @@ public class Obstacle : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("ping2 " + other.tag);
-    }
 }
