@@ -38,6 +38,9 @@ public class JumperAgent : Agent
         Vector3 position = transform.localPosition;
         transform.localPosition = new Vector3(position.x, 1.5f, position.z);
 
+        isJumping = false;
+        isFalling = false;
+
         spawnerScript.ResetSpawner();
 
         for (int i = spawner.childCount-1; i >= 0 ; i--)
