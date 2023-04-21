@@ -18,7 +18,9 @@ The agent also includes the agent script *JumperAgent*, the Behavior Parameters 
 The project contains 3 scripts, the JumperAgent, the Obstacle, and the SpawnerBehaviour.
 
 The JumperAgent script is the main script containing a few serialized fields for various properties like the jump force, rewards, and the spawner count. When the episode starts the agent and spawner get reset and all the obstacles get destroyed.
+
 ![inAction](inAction.png)
+
 In the OnActionReceived method we get the discrete actions and use it to determine whether we should jump if not, depending on the current state and discrete actions the agent can call the Jump method. In the Heuristic method we just check if spacebar is pressed and set the discrete action accordingly.
 
 There is a method CheckEpisodeDuration which ensures that the episode end once a certain amount of obstacles have been spawned. We don't collect any observations since the agent only needs the information provided by the ray-perception sensor.
