@@ -115,9 +115,4 @@ public class JumperAgent : Agent
         AddReward(jumpPenalty);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
-
-    public static explicit operator JumperAgent(GameObject v)
-    {
-        throw new NotImplementedException();
-    }
 }
